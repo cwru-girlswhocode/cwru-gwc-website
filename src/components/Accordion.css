@@ -1,0 +1,25 @@
+
+.AccordionItem {
+   border-radius: 8px;
+   overflow: hidden;
+   margin-bottom: 20px;
+   background-color: #fff;
+ }
+ 
+ .AccordionHeader {
+   padding: 20px;
+   cursor: pointer;
+   transition: background-color .15s ease-in-out;
+ 
+   &:hover{
+     background-color: #FFD700;
+   }
+   &.active{
+     background-color: #FFD700;
+   }
+ }
+ 
+ .AccordionPanel{
+   padding: 20px;
+ }
+ 

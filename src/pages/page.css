@@ -1,0 +1,34 @@
+.page {
+   padding: 75px 0 150px 0; 
+   max-width: 100vw;
+   /* margin-left: 8%; */
+}
+
+#page-background {
+   background: linear-gradient(0deg, rgba(232,232,232,1.00), 6%,rgba(178,229,247,1.00) 90%);
+   background-position: center center;
+}
+
+#page-background-2 {
+   background-image: linear-gradient(135deg, rgba(232,232,232,1.00) 6%,rgba(178,229,247,1.00) 89%);
+   background-position: center center;
+}
+
+.container {
+   align-content: center; 
+   position: relative;
+   overflow: hidden;
+   width: 100%;
+   padding-top: 66.66%;
+}
+
+.responsive-iframe {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   width: 100%;
+   height: 80%;
+ }
+
