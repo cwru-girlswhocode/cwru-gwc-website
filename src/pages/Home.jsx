@@ -54,7 +54,7 @@ export default function Home() {
       fontFamily: 'Poppins', 
       fontWeight: '600',
       fontSize: '16px', 
-      border: "1.5px solid", 
+      border: "2px solid", 
       backgroundColor: '#22252A',
       color: "#fff",
       borderColor: "#22252A",
@@ -62,10 +62,9 @@ export default function Home() {
       py: '3px',
       transition: '0.5s',
       '&:hover': {
-         backgroundColor: '#22252A',
-         color: "#fff",
          borderColor: "#22252A",
-         letterSpacing: '2px',
+         backgroundColor: '#E9E9E9',
+         color: '#22252A',
          transition: '0.5s'
       },
    }

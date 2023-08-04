@@ -100,7 +100,7 @@ export default function About() {
          
             <Reveal>
             {/* <Paper elevation={2} sx={{background: 'rgba(240, 240, 240, 0.8)', p: '5vh', borderRadius: '12px'}}> */}
-               <Stack justifyContent= 'space-around' alignItems='start' spacing={1} sx={{mb: '4vh'}}>
+               <Stack justifyContent= 'space-around' alignItems='start' spacing={1} sx={{mt: '10vh', mb: '4vh'}}>
                      <Typography variant='h4' sx={{fontWeight: 600, }}>
                         Who We Are: 
                      </Typography>
@@ -147,7 +147,7 @@ export default function About() {
             </Reveal>
 
             <Reveal>
-               <Stack justifyContent= 'space-around' alignItems='start' spacing={1} sx={{mb: '6vh'}}>
+               <Stack justifyContent= 'space-around' alignItems='start' spacing={1} sx={{mb: '10vh'}}>
                      <Typography variant='h4' sx={{fontWeight: 600, }}>
                         What We Do: 
                      </Typography>
@@ -172,20 +172,6 @@ export default function About() {
                      </Grid>
                </Stack>
             </Reveal>
-           
-
-            {/* <Paper elevation={2} sx={{background: 'rgba(240, 240, 240, 0.8)', p: '5vh', mt: '5vh',mb: '6vh',  borderRadius: '12px'}}>
-               <Stack direction="column" justifyContent= 'space-around' alignItems='start' spacing={3}>
-                  <div>
-                     <Typography variant='h4' sx={{fontWeight: 600, mb: '2vh'}}>
-                        What We Do
-                     </Typography>
-                     <Typography variant="body1" sx={{width: '95%'}}>
-                        We provide two different sessions to give an introduction to basic computer science and engineering concepts. Our Python session teaches the foundation of coding, while our Arduino session offers an opportunity to learn programming with circuits. 
-                     </Typography>
-                  </div>
-               </Stack>
-            </Paper> */}
 
             {/* for computer */}
             <Reveal>
@@ -205,7 +191,7 @@ export default function About() {
 
             {/* for mobile */}
             <Reveal>
-            <Stack direction="column" sx={{mb: '2vh', display: {xs: 'block', md: 'none'} }} spacing={4}>
+            <Stack direction="column" sx={{mb: '4vh', display: {xs: 'block', md: 'none'} }} spacing={4}>
                <Typography variant="h3" sx={{fontWeight: 700}}>
                   Why is Girls Who Code important?
                </Typography>
@@ -218,6 +204,7 @@ export default function About() {
                </div>
             </Stack>
             </Reveal>
+            <br/>
 
          </motion.div>
       </motion.div>

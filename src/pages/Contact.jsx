@@ -129,7 +129,7 @@ export default function Contact() {
                <PageTitle title="Contact" />
 
                <StaggerItem index={1.25}>
-               <Grid container xs={12} direction='row'  alignItems='stretch' justifyContent='center' sx={{width: '100%'}}>
+               <Grid container xs={12} direction='row'  alignItems='stretch' justifyContent='center' sx={{width: '100%', mb: '5vh'}}>
                   <Grid item xs={12} md={4} height='auto'>
                      <Paper sx={{height: '100%', backgroundColor: '#22252A', px: '3vh'}}>
                         <Typography variant='h4' sx={{color: '#fff', fontWeight: 600, textAlign: 'left', width: 'auto', py: '3vh'}}>
