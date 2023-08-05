@@ -22,7 +22,7 @@ export default function App() {
       <Header />
       <div className="pages" >
         {/* <AnimatedRoutes /> */}
-        <Routes location={location} key={location.pathname}>
+        <Routes >
          <Route path="/" element={<Home />} />
          <Route path="/about" element={<About />} />
          <Route path="/about/facilitators" element={<Facilitators />} />          

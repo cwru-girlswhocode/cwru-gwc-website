@@ -119,7 +119,7 @@ export default function Home() {
                }}>
                   Case Western Reserve University
                </Typography>
-               <Typography variant="h5" sx={{px: '5px', my: 'max(28px, 4.5vh)', width: {xs: '80%', md: '65%'}, fontSize: {xs: '17px', md: '26px', xl: '40px'} }}>
+               <Typography variant="h5" sx={{px: '5px', my: 'max(28px, 6vh)', width: {xs: '80%', md: '65%'}, fontSize: {xs: '17px', md: '26px', xl: '40px'} }}>
                   Motivated to close the gender gap within the field of computer science by encouraging high school students to enter the field of tech.
                </Typography>
                
@@ -147,7 +147,7 @@ export default function Home() {
             style={{ background: 'linear-gradient(60deg, rgba(232,232,232,1.00) 6%,rgba(178,229,247,1.00) 58%,rgba(0,158,206,1.00) 99%)'}}
          >
             <motion.div className="page-background" ref={theRef} style={{ 
-               textAlign: 'left', height: '100%', padding: "8vh 8%" }} >
+               textAlign: 'left', height: '100%', padding: "9vh 8%" }} >
                <Reveal index={1}>
                   <Typography variant="h2" sx={{fontSize: {xs: '36px', md: '53px', xl: '75px'} }}>
                         Our Mission
@@ -160,7 +160,7 @@ export default function Home() {
                         </Typography>
                         <br/>
                         <Button variant="outline" 
-                           href='/about'
+                           href='/#/about'
                            sx={{ ...btnStyle, 
                            // mt: '4vh',
                            // mb: '5vh', 
@@ -188,7 +188,7 @@ export default function Home() {
             whileInView="onscreen"
             viewport={{once: true}}
          >
-            <motion.div className="page-background" style={{ textAlign: 'left', height: '100%', padding: "8vh 8%"}}>
+            <motion.div className="page-background" style={{ textAlign: 'left', height: '100%', padding: "9vh 8%"}}>
                <Reveal>
                   <Typography variant="h2" sx={{fontSize: {xs: '36px', md: '53px', xl: '75px'}}}>
                      Sessions We Offer
@@ -201,7 +201,7 @@ export default function Home() {
                   </Typography>
                   
                   <Button variant="outline" 
-                     href='/about'
+                     href='/#/sessions'
                      sx={{  ...btnStyle, 
                         px: '5vh',
                         fontSize: {xs: '13px', md: '16px', xl: '24px'}, 
@@ -218,7 +218,7 @@ export default function Home() {
                   <Grid item xs={12} md={6}>
                      <StaggerItem index={1.25}>
                         <Card sx={{ minWidth: 300, borderRadius: '10px' }}>
-                           <CardMedia component='img' image={pythonPic} height='auto' width='50%'  sx={{minWidth: 400, mx: 'auto'}} />
+                           <CardMedia component='img' image={pythonPic} height='350' width='auto'  sx={{minWidth: 400, mx: 'auto'}} />
                            <CardContent sx={{px: '5%'}}>
                               <Typography variant='h3' sx={{font: 'Poppins', fontWeight: '800px', pt: '10px', pb: '10px', 
                                  fontSize:{xs: '32px', xl: '45px'},
@@ -243,7 +243,7 @@ export default function Home() {
                   <Grid item xs={12} md={6}>
                      <StaggerItem index={1.5}>
                         <Card sx={{ minWidth: 300, borderRadius: '10px' }}>
-                           <CardMedia component='img' image={arduinoPic} height='auto' width='50%' sx={{minWidth: 'auto'}} />
+                           <CardMedia component='img' image={arduinoPic} height='350' width='auto' sx={{minWidth: 'auto'}} />
                            <CardContent sx={{px: '5%'}}>
                               <Typography variant='h3' sx={{font: 'Poppins', fontWeight: '800px', pt: '10px', pb: '10px', 
                                  fontSize:{xs: '32px', xl: '45px'},

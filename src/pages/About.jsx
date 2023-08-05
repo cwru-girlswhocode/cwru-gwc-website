@@ -26,19 +26,19 @@ export default function About() {
    const infoBoxes = [
       {
          text: 'Meet Our Facilitators',
-         link: '/about/facilitators', 
+         link: '/#/about/facilitators', 
          icon: <GroupsIcon sx={{ml: '1vh', mr: '2.5vh', color: "#009ECF", fontSize: {xs: '24px', xl: '45px'} }} />, 
          image: groupPic
       }, 
       {
          text: 'About Our Sessions',
-         link: '/sessions', 
+         link: '/#/sessions', 
          icon: <TerminalIcon sx={{ml: '1vh', mr: '2.5vh', color: "#009ECF", fontSize: {xs: '24px', xl: '45px'} }} />, 
          image: whatWeDo
       }, 
       {
          text: 'Contact Us',
-         link: '/contact', 
+         link: '/#/contact', 
          icon: <SendIcon sx={{ml: '1vh', mr: '2.5vh', color: "#009ECF", fontSize: {xs: '24px', xl: '45px'} }} />, 
          image: groupPic2
       }

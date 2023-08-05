@@ -193,7 +193,7 @@ export default function Sessions() {
                <Reveal>
                <Paper elevation={2} sx={{backgroundColor: '#F4F4F4', my: '5.5vh', borderLeft: 'solid 8px', borderColor: '#009ECF'}}>
                   <Typography sx={{fontSize: {xs: '18px', md: '22px', xl: '38px'}, p: '3vh'}}>
-                     Any questions about our sessions? Check out the <a style={linkStyle} href='/contact/faqs'>FAQs</a>.
+                     Any questions about our sessions? Check out the <a style={linkStyle} href='/#/contact/faqs'>FAQs</a>.
                   </Typography>
                </Paper>
                </Reveal>
