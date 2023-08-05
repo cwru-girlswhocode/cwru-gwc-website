@@ -26,11 +26,11 @@
  .prevButton {
    /* top: calc(50% - 20px); */
    position: absolute;
-   background: rgba(114,114,114,.4);
+   background: rgba(114, 114, 114, 0.612);
    color: white; 
    border-radius: 100%;
-   width: 3vw;
-   height: 3vw;
+   width: calc(3vw + 5px);
+   height: calc(3vw + 5px);
    display: flex;
    border: none; 
    justify-content: center;

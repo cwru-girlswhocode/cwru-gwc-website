@@ -122,7 +122,9 @@ export default function Resources() {
                {allInfo.map(obj => (
                   <Reveal key={obj.title}>
                   <Box sx={{py: '5vh', px: '6vh', backgroundColor: 'rgba(255, 255, 255, 0.5)', my: '3vh'}}>
-                     <Typography variant='h4' sx={{fontWeight: 600, mb: '4vh'}}>
+                     <Typography variant='h4' sx={{fontWeight: 600, mb: '4vh', 
+                     fontSize: {xs: '26px', md: '34px', xl: '60px'}
+                  }}>
                            {obj.title}
                      </Typography>
                      <Grid container spacing={2} alignItems='stretch' >
@@ -132,11 +134,13 @@ export default function Resources() {
                               <Card sx={{justifyContent: 'space-between', flexDirection: 'column', pb: '1vh', width: '100%', '&:hover': {backgroundColor: '#F3F3F3', boxShadow: '1px 7px 5px rgba(0,0,0, .25)'}}}>
                                  <Reveal>
                                  <CardActionArea href={res.link} target='_blank' sx={{'&:hover': { textDecoration: 'unset'}}}>
-                                    <CardMedia component='img' image={res.image} height='200' width='full' 
+                                    <CardMedia component='img' image={res.image} height='225' width='full' 
                                     sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}} 
                                     />
                                     <CardContent sx={{textDecoration: 'unset !important',}}>
-                                       <Typography variant='h5' sx={{fontWeight: '500', alignSelf: 'center'}}>
+                                       <Typography variant='h5' sx={{fontWeight: '500', pt: '0.75vh', alignSelf: 'center',
+                                          fontSize: {xs: '22px', md: '22px', xl: '40px'}
+                                       }}>
                                           {res.name}
                                        </Typography>
                                        <Divider sx={{my: '2vh'}}/>

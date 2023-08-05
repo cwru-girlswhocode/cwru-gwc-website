@@ -52,6 +52,13 @@ export default function Sessions() {
          color: "#B2E5F7",
       },
    }
+
+   const subtitleStyle = {
+      fontFamily: 'Poppins',
+      fontSize: {xs: '28px', md: '44px', xl: '65px'},
+      fontWeight: 700
+   }
+
    return (
       <ThemeProvider theme={theme}>
           <motion.div 
@@ -185,7 +192,7 @@ export default function Sessions() {
                
                <Reveal>
                <Paper elevation={2} sx={{backgroundColor: '#F4F4F4', my: '5.5vh', borderLeft: 'solid 8px', borderColor: '#009ECF'}}>
-                  <Typography sx={{fontSize: '22px', p: '3vh'}}>
+                  <Typography sx={{fontSize: {xs: '18px', md: '22px', xl: '38px'}, p: '3vh'}}>
                      Any questions about our sessions? Check out the <a style={linkStyle} href='/contact/faqs'>FAQs</a>.
                   </Typography>
                </Paper>
@@ -193,7 +200,7 @@ export default function Sessions() {
                
                <Reveal>
                <Stack direcion="column" spacing={3} sx={{mb: '-10%'}}>
-                  <Typography variant="h3" >
+                  <Typography variant="h3" sx={subtitleStyle} >
                      Hear From Our Facilitators and Students
                   </Typography>
                   <Divider variant="fullWidth" sx={{width: '55%', borderBottomWidth: 3, backgroundColor: "#22252A"}}/>

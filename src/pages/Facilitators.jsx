@@ -121,7 +121,7 @@ export default function Facilitators() {
    const chipStyle = {
       fontFamily: 'Poppins', 
       fontWeight: '400',
-      fontSize: '2.5vh', 
+      fontSize: {xs: '14px', md: '18px', xl: '30px'}, 
       p: '2vh', 
    }
 
@@ -148,15 +148,15 @@ export default function Facilitators() {
                <PageTitle title="Meet Our Facilitators" />
 
                <Reveal index={1.3}>
-                  <Paper elevation={2} sx={{backgroundColor: '#F4F4F4', my: '25px', borderLeft: 'solid 8px', borderColor: '#009ECF'}}>
-                     <Typography sx={{fontSize: '22px', p: '3vh'}}>
+                  <Paper elevation={2} sx={{backgroundColor: '#F4F4F4', my: '25px', borderLeft: 'solid 8px', borderColor: '#009ECF', mb: '4vh'}}>
+                     <Typography sx={{fontSize: {xs: '16px', md: '22px', xl: '38px'}, p: '3vh'}}>
                         Interested in becoming a facilitator? <a style={linkStyle} target='_blank' rel="noreferrer" href={facilitatorForm} >Apply for next semester!</a> <em>(CWRU students only)</em>
                      </Typography>
                   </Paper>
                </Reveal>
                
                <Reveal index={1.5}>
-                  <Typography variant='h4' sx={{fontSize: '26px', mr: '2%', mb: '2.5vh'}}>
+                  <Typography variant='h4' sx={{fontSize: {xs: '22px', md: '26px', xl: '48px'}, mr: '2%', mb: '2.5vh'}}>
                         Filter Facilitators:
                   </Typography>
                </Reveal>
@@ -188,7 +188,7 @@ export default function Facilitators() {
                         <Card sx={{ minWidth: 'auto' }}>
                            <CardMedia component='img' 
                            image={`https://drive.google.com/uc?export=view&id=${obj["Image ID"]}`} 
-                           height='300' width='full' sx={{display: 'block', mx: 'auto'}} />
+                           height='330vh' width='auto' sx={{display: 'block', mx: 'auto',}} />
 
                            <CardContent sx={{pt: '5%'}} >
                               <Typography variant='h5' sx={{fontWeight: 600, fontSize:'1.5em', textAlign: 'center', pb: '2%'}}>

@@ -57,7 +57,7 @@ const theme = createTheme({
       h4: {
          fontFamily: 'Poppins', 
          fontWeight: 500,
-         color: '#22252A'
+         color: '#22252A', 
       },
       h5: {
          fontFamily: 'Poppins', 

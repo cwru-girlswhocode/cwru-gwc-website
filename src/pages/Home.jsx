@@ -73,12 +73,12 @@ export default function Home() {
       textTransform: 'unset !important', 
       fontFamily: 'Poppins', 
       fontWeight: '600',
-      fontSize: '16px', 
+      fontSize:{xs: '13px', md: '16px', xl: '22px'},  
       color: 'white',
       border: "1.5px solid", 
       borderColor: "#009ECE",
       backgroundColor: '#009ECE',
-      px: '20px',
+      px: '25px',
       py: '3px',
       '&:hover': {
          backgroundColor: '#F5F5F5',
@@ -99,20 +99,27 @@ export default function Home() {
    return (
       <ThemeProvider theme={theme}>
          <motion.div 
-            style={{background: 'linear-gradient(120deg, rgba(232,232,232,1.00) 6%,rgba(178,229,247,1.00) 58%,rgba(0,158,206,1.00) 99%)', backgroundPosition: 'center center', height: "100vh", padding: "75px 0 125px 0"}}
+            style={{background: 'linear-gradient(120deg, rgba(232,232,232,1.00) 6%,rgba(178,229,247,1.00) 58%,rgba(0,158,206,1.00) 99%)', backgroundPosition: 'center center', height: "100%", padding: "75px 0 125px 0" }}
          >
             <motion.div 
                className="page-background" 
                style={{margin: '0 8%', textAlign: 'left'}}
             >
                <Reveal index={1.5}>
-               <Typography variant="h1" sx={{fontSize: '76px', pt: '3%'}}>
+               <Typography variant="h1" sx={{
+                  // fontSize: '76px',
+                  fontSize: {xs: '36px', md: '72px', xl: '104px'}, 
+                  pt: '3%'}}>
                      Girls Who Code
                </Typography>
-               <Typography variant="h3" sx={{px: '5px', py: '1%'}}>
+               <Typography variant="h3" sx={{
+                  px: '2px', py: '1vh', textAlign: 'left', 
+                  fontSize: {xs: '24px', md: '40px', xl: '70px'},
+                  fontWeight: '500',
+               }}>
                   Case Western Reserve University
                </Typography>
-               <Typography variant="h5" sx={{px: '5px', my: '8vh', width: '60%'}}>
+               <Typography variant="h5" sx={{px: '5px', my: 'max(28px, 4.5vh)', width: {xs: '80%', md: '65%'}, fontSize: {xs: '17px', md: '26px', xl: '40px'} }}>
                   Motivated to close the gender gap within the field of computer science by encouraging high school students to enter the field of tech.
                </Typography>
                
@@ -122,9 +129,12 @@ export default function Home() {
                      y: [7, -7], 
                   }}               
                   transition= {isBouncing ? bounceTransition : {} }
+                  style={{marginTop: '7vh', marginLeft: '-5px'}}
                >
                   <IconButton color="secondary" size="large" onClick={handleButtonClick} >
-                     <ExpandMoreRoundedIcon fontSize="large" sx={{transform: 'scale(1.5)', color: '#6B6D71'}} />
+                     <ExpandMoreRoundedIcon fontSize="large" sx={{transform: 'scale(1.5)', color: '#6B6D71', 
+                        fontSize: {xs: '24px', md: '32px', xl: '52px'} }} 
+                     />
                   </IconButton>
                </motion.div>
                </Reveal>
@@ -136,24 +146,27 @@ export default function Home() {
             id="home-page-more"
             style={{ background: 'linear-gradient(60deg, rgba(232,232,232,1.00) 6%,rgba(178,229,247,1.00) 58%,rgba(0,158,206,1.00) 99%)'}}
          >
-            <motion.div className="page-background" ref={theRef} style={{ textAlign: 'left', height: '100%', padding: "8% 8%"}} >
+            <motion.div className="page-background" ref={theRef} style={{ 
+               textAlign: 'left', height: '100%', padding: "8vh 8%" }} >
                <Reveal index={1}>
-                  <Typography variant="h2" >
+                  <Typography variant="h2" sx={{fontSize: {xs: '36px', md: '53px', xl: '75px'} }}>
                         Our Mission
                   </Typography>
-                  <Divider variant="fullWidth" sx={{width: '55%', my: '5vh', borderBottomWidth: 3, backgroundColor: "#22252A"}}/>
-                  <Grid container spacing={5}>
-                     <Grid item xs={12} md={6} justifyContent='space-evenly' sx={{alignItems: 'stretch'}}>
-                        <Typography variant="body1" sx={{fontSize: '22px', mb: '2vh'}}>
+                  <Divider variant="fullWidth" sx={{width: '55%', my: '4vh', borderBottomWidth: 3, backgroundColor: "#22252A",}}/>
+                  <Grid container spacing={3}>
+                     <Grid item xs={12} md={6} justifyContent='space-evenly' sx={{alignItems: 'stretch', justifyContent: 'space-between'}}>
+                        <Typography variant="body1" sx={{mb: '2vh', fontSize: {xs: '16px', md: '23px', xl: '36px'}, width: '97%' }}>
                            Girls Who Code’s mission is to close the gender gap in technological fields. By focusing on students in the age group of 13-17 who identify as female and nonbinary, we hope to expose them to the opportunities that they could have in the tech industry and diversify the field, pushing for equity and inclusion.
                         </Typography>
+                        <br/>
                         <Button variant="outline" 
                            href='/about'
                            sx={{ ...btnStyle, 
-                           mt: '4vh',
-                           mb: '5vh', 
+                           // mt: '4vh',
+                           // mb: '5vh', 
                            px: '5vh',
-                           fontSize: '16px',                   
+                           fontSize: {xs: '13px', md: '16px', xl: '24px'}, 
+                           mt: {xs: '-3vh', md: '1vh'}
                            }}
                            endIcon={<ChevronRightRoundedIcon/>}
                         >
@@ -175,14 +188,14 @@ export default function Home() {
             whileInView="onscreen"
             viewport={{once: true}}
          >
-            <motion.div className="page-background" style={{ textAlign: 'left', height: '100%', padding: "8% 8%"}}>
+            <motion.div className="page-background" style={{ textAlign: 'left', height: '100%', padding: "8vh 8%"}}>
                <Reveal>
-                  <Typography variant="h2" >
+                  <Typography variant="h2" sx={{fontSize: {xs: '36px', md: '53px', xl: '75px'}}}>
                      Sessions We Offer
                   </Typography>
-                  <Divider variant="fullWidth" sx={{width: '55%', my: '5vh', borderBottomWidth: 3, backgroundColor: "#22252A"}}/>
+                  <Divider variant="fullWidth" sx={{width: '55%', my: '4vh', borderBottomWidth: 3, backgroundColor: "#22252A",}}/>
 
-                  <Typography variant="body1">
+                  <Typography variant="body1" sx={{fontSize: {xs: '16px', md: '23px', xl: '36px'},}}>
                      CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> to introduce high-school girls to basic programming and problem-solving skills. Currently, we are seeking students in the Cleveland area for our programs this fall. We currently offer two weekly sessions for high school students: Intro to Programming with Python and Intro to Arduino.
 
                   </Typography>
@@ -190,10 +203,11 @@ export default function Home() {
                   <Button variant="outline" 
                      href='/about'
                      sx={{  ...btnStyle, 
-                        mt: '4vh',
-                        mb: '5vh', 
                         px: '5vh',
-                        fontSize: '16px',  }}
+                        fontSize: {xs: '13px', md: '16px', xl: '24px'}, 
+                        mt: {xs: '3vh', md: '5vh', xl: '4vh'}, 
+                        mb: {xs: '3.5vh', md: '5.5vh', xl: '4.5vh'}, 
+                     }}
                      endIcon={<ChevronRightRoundedIcon/>}
                   >
                      Learn About Our Sessions
@@ -206,13 +220,15 @@ export default function Home() {
                         <Card sx={{ minWidth: 300, borderRadius: '10px' }}>
                            <CardMedia component='img' image={pythonPic} height='auto' width='50%'  sx={{minWidth: 400, mx: 'auto'}} />
                            <CardContent sx={{px: '5%'}}>
-                              <Typography variant='h3' sx={{font: 'Poppins', fontSize:'32px', fontWeight: '800px', py: '3%'}}>
+                              <Typography variant='h3' sx={{font: 'Poppins', fontWeight: '800px', pt: '10px', pb: '10px', 
+                                 fontSize:{xs: '32px', xl: '45px'},
+                              }}>
                                  Intro to Python
                               </Typography>
-                              <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
+                              <Typography variant='body1' sx={{fontWeight: '600',fontSize:{xs: '22px', md: '26px',xl: '34px'}}}> 
                                  When:
                               </Typography>
-                              <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
+                              <Typography variant='body2' sx={{fontSize:{xs: '16px', md: '20px', xl: '26px'}, pb: '20px'}}> 
                                  Every Saturday from 9/23 - 11/18
                                  <br /> 10:00 am - 12:00 pm
                               </Typography>
@@ -229,13 +245,15 @@ export default function Home() {
                         <Card sx={{ minWidth: 300, borderRadius: '10px' }}>
                            <CardMedia component='img' image={arduinoPic} height='auto' width='50%' sx={{minWidth: 'auto'}} />
                            <CardContent sx={{px: '5%'}}>
-                              <Typography variant='h3' sx={{font: 'Poppins', fontSize:'32px', fontWeight: '800px', py: '3%'}}>
+                              <Typography variant='h3' sx={{font: 'Poppins', fontWeight: '800px', pt: '10px', pb: '10px', 
+                                 fontSize:{xs: '32px', xl: '45px'},
+                              }}>
                                  Intro to Arduino
                               </Typography>
-                              <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
+                              <Typography variant='body1' sx={{fontWeight: '600',fontSize:{xs: '22px', md: '26px',xl: '34px'}}}> 
                                  When:
                               </Typography>
-                              <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
+                              <Typography variant='body2' sx={{fontSize:{xs: '16px', md: '20px', xl: '26px'}, pb: '20px'}}> 
                                  Every Sunday from 9/24 - 11/19
                                  <br/>10:00 am - 12:00 pm
                               </Typography>

@@ -29,7 +29,7 @@ export default function Header(props) {
 
    const btnStyle = {
       textTransform: 'unset !important', 
-      fontSize: '20px',
+      fontSize: 'max(20px, 1.5vw)',
       fontFamily: 'Poppins', 
       borderRadius: '0px',
       fontWeight: '500', 

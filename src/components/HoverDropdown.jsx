@@ -19,7 +19,7 @@ function HoverDropdown ({title, link, submenu}) {
 
   const btnStyle = {
    textTransform: 'unset !important', 
-   fontSize: '20px',
+   fontSize: 'max(20px, 1.5vw)',
    fontFamily: 'Poppins', 
    borderRadius: '0px',
    fontWeight: '500', 
@@ -46,14 +46,12 @@ const listBtnStyle = {
    pr: '10px',
    '&:hover': {
       color: '#009ECF',
-      // transform: 'scale(0.1, 1)'
-      // backgroundColor: '#F2F2F2',
    },
 }
 
   return (
     <React.Fragment>
-      <NavLink to={link} activeClassName='active'>
+      <NavLink to={link}>
          <Button variant="text" sx={btnStyle} {...bindHover(popupState)}>
             {title}
          </Button>

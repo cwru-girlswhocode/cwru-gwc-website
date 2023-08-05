@@ -45,8 +45,8 @@ export default function Footer() {
                <Toolbar sx={{justifyContent: 'center',}}>
                   <Stack direction='column' justifyContent='space-evenly' alignItems='center' spacing={2}>
                      <Typography variant='h5' sx={{color: 'white', fontWeight: '600'}}>
-                        Girls Who Code
-                        <br/>Case Western Reserve University
+                        <a href="/" style={{color: 'white', fontWeight: '600'}}>Girls Who Code
+                        <br/>Case Western Reserve University</a>
                      </Typography>
 
                      <Divider sx={{ width: '100%',  borderBottomWidth: 3, backgroundColor: "#DBDBDB"}}/>

@@ -99,12 +99,12 @@ export default function CustomizedAccordions(tab) {
       {Array.isArray(quests) && quests.map((row, index) => (
          <Accordion expanded={expanded === `panel${index + 1}`} onChange={handleChange(`panel${index + 1}`)} key={index}>
             <AccordionSummary aria-controls={`panel1d${index + 1}-content`} id={`panel${index + 1}d-header`}>
-            <Typography variant='h5' sx={{fontWeight: 500, color: '#ffffff'}}>{row['Question']}</Typography>
+              <Typography variant='h5' sx={{fontWeight: 500, color: '#ffffff', fontSize: {xs: '16px', md: '22px', xl: '30px'}}}>{row['Question']}</Typography>
             </AccordionSummary>
             <AccordionDetails>
-            <Typography variant='body1' sx={{pl: '5vh', fontSize: '20px'}}>
-               {row["Answer"]}
-            </Typography>
+              <Typography variant='body1' sx={{pl: '5vh', fontSize: {xs: '14px', md: '20px', xl: '28px'}}}>
+                {row["Answer"]}
+              </Typography>
             </AccordionDetails>
        </Accordion>
 
