@@ -1,8 +1,7 @@
 import {useRef, useState, useEffect} from "react";
 import {ThemeProvider} from '@mui/material/styles'; 
 import theme from '../styles/Styles.jsx'; 
-// import { Link } from "react-router-dom";
-// import Dropdown from '../components/Dropdown'
+import { Helmet } from "react-helmet";
 
 import '../App.css';
 import { Button, IconButton, Typography, Grid, Card, CardMedia, CardActions, Divider, Stack, CardContent, ImageList, ImageListItem, ImageListItemBar, Box } from "@mui/material";  
@@ -98,6 +97,12 @@ export default function Home() {
 
    return (
       <ThemeProvider theme={theme}>
+         <Helmet>
+            <meta charSet="utf-8" />
+            <title>CWRU Girls Who Code</title>
+            <link rel="canonical" href="https://cwrugirlswhocode.com" />
+            <meta name="description" content="Case Western Reserve University's chapter of Girls Who Code"/>
+         </Helmet>
          <motion.div 
             style={{background: 'linear-gradient(120deg, rgba(232,232,232,1.00) 6%,rgba(178,229,247,1.00) 58%,rgba(0,158,206,1.00) 99%)', backgroundPosition: 'center center', height: "100%", padding: "75px 0 125px 0" }}
          >
