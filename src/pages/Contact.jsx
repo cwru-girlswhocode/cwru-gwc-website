@@ -90,7 +90,7 @@ export default function Contact() {
       if(canSubmit) {
          const templateParams = {
             from_name: form.name, 
-            from_emai: form.email, 
+            from_email: form.email, 
             subject: form.about, 
             message: form.message
          }
