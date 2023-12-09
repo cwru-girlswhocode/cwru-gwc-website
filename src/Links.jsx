@@ -1,5 +1,5 @@
-export const arduinoSignUpLink = "https://forms.gle/wRk43TFis2sDJiaA6";
-export const pythonSignUpLink = "https://forms.gle/MjNYs2UaJQ8246F37";
+export const arduinoSignUpLink = "https://docs.google.com/forms/d/e/1FAIpQLSc4Fo6ssd5Ziph9F6mxF8eimX_-AlIzoLkJ1FaC_4Bh9OwrLA/viewform";
+export const pythonSignUpLink = "https://docs.google.com/forms/d/e/1FAIpQLSfqfASTNhg5Bjakqau8oThhAcLdnSPjL3qUPEo9xjiNM3afxg/viewform";
 
 export const facilitatorForm = "https://forms.gle/vE8Gds2hxR4dxu166"; 
 
