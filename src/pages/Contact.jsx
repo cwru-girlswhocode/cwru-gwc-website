@@ -14,7 +14,8 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import {  Typography, Divider, Box, Grid, Stack , TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Paper, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Snackbar, Alert} from "@mui/material";
 import PageTitle from '../components/PageTitle.jsx'; 
 import StaggerItem from '../styles/StaggerItems.jsx';
-
+import useGoogleSheets from 'use-google-sheets';
+import { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
 
 export default function Contact() {
    const linkStyle = {
@@ -26,6 +27,19 @@ export default function Contact() {
          color: "#B2E5F7",
       },
    }
+
+   const [links, setLinks] = useState([]); 
+   const { data, loading, error } = useGoogleSheets({
+      apiKey: GOOGLE_API_KEY,
+      sheetId: SPREADSHEET_ID,
+      sheetsOptions: [{ id: 'Links' }],
+    });
+
+   useEffect(() => {
+      if(data[0]) {
+         setLinks(data[0].data[0])
+      }
+   }, [data])
 
    const [form, setForm] = useState({
       name: '', 
@@ -44,12 +58,7 @@ export default function Contact() {
    const [openSnackbar, setOpenSnackbar] = useState(false); 
    const [sendBtn, setSendBtn] = useState(false)
 
-   const SERVICE_ID = 'service_y1q8och';
-   const TEMPLATE_ID = 'template_1lwwk0s';
-   const PUBLIC_KEY = 'SaS-BvIgwRrtpkbfb'; 
-
    const handleFieldChange = (e) => {
-      // console.log(e.target.value)
       setForm({
          ...form,
          [e.target.name]: e.target.value,
@@ -179,7 +188,7 @@ export default function Contact() {
                            </Typography>
                            <List>
                               <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
-                                 <ListItemButton href={pythonSignUpLink} target='_blank'>
+                                 <ListItemButton href={links["Python"]} target='_blank'>
                                     <ListItemIcon>
                                        <PersonAddIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>
@@ -194,7 +203,7 @@ export default function Contact() {
                                  </ListItemButton>
                               </ListItem>
                               <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
-                                 <ListItemButton href={arduinoSignUpLink} target='_blank'>
+                                 <ListItemButton href={links["Arduino"]} target='_blank'>
                                     <ListItemIcon>
                                        <PersonAddIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>
@@ -209,7 +218,7 @@ export default function Contact() {
                                  </ListItemButton>
                               </ListItem>
                               <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
-                                 <ListItemButton href={facilitatorForm} target='_blank'>
+                                 <ListItemButton href={links["Facilitator"]} target='_blank'>
                                     <ListItemIcon>
                                        <GroupsIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>

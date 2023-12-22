@@ -21,7 +21,6 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <Header />
       <div className="pages" >
-        {/* <AnimatedRoutes /> */}
         <Routes >
          <Route path="/" element={<Home />} />
          <Route path="/about" element={<About />} />

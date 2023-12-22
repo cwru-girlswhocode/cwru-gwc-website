@@ -134,7 +134,7 @@ export default function About() {
                            <Stack direction='row' alignItems='center' spacing={2}>
                               <GroupsIcon sx={iconStyle} />
                               <Typography variant='h5' sx={descTextStyle}>
-                                 <span style={{fontWeight: 550}}>22 Facilitators</span> of CWRU graduate and undergraduate students
+                                 <span style={{fontWeight: 550}}>30 Facilitators</span> of CWRU undergraduate and graduate students
                               </Typography>
                            </Stack>
                         </Grid>

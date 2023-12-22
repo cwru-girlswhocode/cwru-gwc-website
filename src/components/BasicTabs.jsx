@@ -8,7 +8,6 @@ import CustomizedAccordions from '../components/Accordion.jsx';
 import {ThemeProvider} from '@mui/material/styles'; 
 import theme from '../styles/Styles.jsx'; 
 import StaggerItem from '../styles/StaggerItems.jsx';
-// import Reveal from '../styles/Reveal.jsx';
 
 function CustomTabPanel(props) {
   const { children, value, index ,...other } = props;
@@ -20,7 +19,7 @@ function CustomTabPanel(props) {
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
       aria-labelledby={`simple-tab-${index}`}
-      {...other}
+      // {...other}
     >
       {value === index && (
         <StaggerItem index={1.5}>
@@ -59,6 +58,7 @@ export default function BasicTabs() {
     fontFamily: 'Poppins', 
     fontWeight: '600',
     fontSize: '2.5vh', 
+    color: '#22252A'
  }
 
   const tabComponents = 

@@ -13,6 +13,8 @@ import arduinoPic from '../pictures/group-arduino.jpg';
 import pythonPic from '../pictures/what-we-do.jpeg';
 import { pythonSignUpLink, arduinoSignUpLink } from '../Links.jsx';
 import ImageSlider from "../components/ImageSlider.jsx";
+import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
+import useGoogleSheets from 'use-google-sheets';
 
 import image0 from '../pictures/group-photo.jpeg';
 import image1 from "../pictures/groupPic3.jpeg";
@@ -23,10 +25,11 @@ import image5 from '../pictures/what-we-do-pic.jpeg'
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
 
-
 export default function Home() {
    const theRef = useRef(null); 
    const [isBouncing, setIsBouncing] = useState(true);
+   const [python, setPython] = useState({});
+   const [arduino, setArduino] = useState({}); 
 
    const bounceTransition = {
       type: 'spring', 
@@ -47,6 +50,12 @@ export default function Home() {
 
       scrollDown(); 
     };
+
+    const { data, loading, error } = useGoogleSheets({
+      apiKey: GOOGLE_API_KEY,
+      sheetId: SPREADSHEET_ID,
+      sheetsOptions: [{ id: 'Semester Info' }],
+    });
 
     const btnStyle = {
       textTransform: 'unset !important', 
@@ -94,6 +103,14 @@ export default function Home() {
    const images = [
       image0, image5, image2, image3, image4, image1
    ]
+
+   useEffect(() => {
+      if(data[0]) {
+         //python in first row of table and arduino in second row
+         setPython(data[0].data[0])
+         setArduino(data[0].data[1])
+      }
+   }, [data]);
 
    return (
       <ThemeProvider theme={theme}>
@@ -234,10 +251,10 @@ export default function Home() {
                                  When:
                               </Typography>
                               <Typography variant='body2' sx={{fontSize:{xs: '16px', md: '20px', xl: '26px'}, pb: '20px'}}> 
-                                 Every Saturday from 9/23 - 11/18
-                                 <br /> 10:00 am - 12:00 pm
+                                 {python["Date"]}
+                                 <br /> {python["Time"]}
                               </Typography>
-                              <Button href={pythonSignUpLink} target='_blank' sx={btnStyle2} endIcon={<ExitToAppRoundedIcon />}>
+                              <Button href={python["Link"]} target='_blank' sx={btnStyle2} endIcon={<ExitToAppRoundedIcon />}>
                                  Sign Up
                               </Button>
                            </CardContent>
@@ -259,10 +276,10 @@ export default function Home() {
                                  When:
                               </Typography>
                               <Typography variant='body2' sx={{fontSize:{xs: '16px', md: '20px', xl: '26px'}, pb: '20px'}}> 
-                                 Every Sunday from 9/24 - 11/19
-                                 <br/>10:00 am - 12:00 pm
+                                 {arduino["Date"]}
+                                 <br/>{arduino["Time"]}
                               </Typography>
-                              <Button href={arduinoSignUpLink} target='_blank' sx={btnStyle2} endIcon={<ExitToAppRoundedIcon />}>
+                              <Button href={arduino["Link"]} target='_blank' sx={btnStyle2} endIcon={<ExitToAppRoundedIcon />}>
                                  Sign Up
                               </Button>
                            </CardContent>

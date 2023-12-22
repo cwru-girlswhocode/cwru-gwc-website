@@ -13,6 +13,7 @@ import PageTitle from "../components/PageTitle.jsx";
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
 import { SignalWifiStatusbarConnectedNoInternet4TwoTone } from "@mui/icons-material";
+import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
 
 export default function Facilitators() {
    const [filteredInfo, setFilteredInfo] = useState([]);
@@ -31,13 +32,10 @@ export default function Facilitators() {
       'exec': 'outlined'
    }
 
-   const SPREADSHEET_ID = '1gr-fnI5u6pvbTBpvnPQ5vKgabpvBKyDho8wCCk8C0yI';
-   const API_KEY = 'AIzaSyCa44AD3zAObDSuW6NFfPW_SrgO7pOH9G0'; 
-
    const { data, loading, error } = useGoogleSheets({
-      apiKey: API_KEY,
+      apiKey: GOOGLE_API_KEY,
       sheetId: SPREADSHEET_ID,
-      sheetsOptions: [{ id: 'Sheet1' }],
+      sheetsOptions: [{ id: 'Facilitator Pics' }],
     });
 
    useEffect(() => {
@@ -56,6 +54,7 @@ export default function Facilitators() {
    }, [data])
 
    const handleFilterClick = (e) => {
+      console.log(e)
       const chipName = e.target.firstChild.nodeValue.split(' ')[0].toLowerCase();
      //switch variant 
       let newObj = activeChips; 

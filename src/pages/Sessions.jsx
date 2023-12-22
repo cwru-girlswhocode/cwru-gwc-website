@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState, useEffect} from "react";
 import {ThemeProvider} from '@mui/material/styles'; 
 import theme from '../styles/Styles.jsx'; 
 import { Link } from "react-router-dom";
@@ -13,9 +13,12 @@ import { Button, Container, AppBar, Box, Toolbar, Typography, Paper, Grid, Card,
 import PageTitle from "../components/PageTitle.jsx";
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
-// import groupPic from '../pictures/group-photo.jpeg';
+import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
+import useGoogleSheets from 'use-google-sheets';
 
 export default function Sessions() {
+   const [python, setPython] = useState({});
+   const [arduinoInfo, setArduinoInfo] = useState({}); 
 
    const btnStyle = {
       textTransform: 'unset !important', 
@@ -58,6 +61,20 @@ export default function Sessions() {
       fontSize: {xs: '28px', md: '44px', xl: '65px'},
       fontWeight: 700
    }
+
+   const { data, loading, error } = useGoogleSheets({
+      apiKey: GOOGLE_API_KEY,
+      sheetId: SPREADSHEET_ID,
+      sheetsOptions: [{ id: 'Semester Info' }],
+    });
+
+    useEffect(() => {
+      if(data[0]) {
+         //python in first row of table and arduino in second row
+         setPython(data[0].data[0])
+         setArduinoInfo(data[0].data[1])
+      }
+   }, [data]);
 
    return (
       <ThemeProvider theme={theme}>
@@ -113,8 +130,8 @@ export default function Sessions() {
                                  When:
                               </Typography>
                               <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
-                              Every Saturday from 9/23 - 11/18
-                              <br /> 10:00 am - 12:00 pm
+                              {python["Date"]}
+                              <br /> {python["Time"]}
                               </Typography>
 
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
@@ -124,7 +141,7 @@ export default function Sessions() {
                                  Case Western Reserve University
                               </Typography>
 
-                              <Button variant="outline" startIcon={<PersonAddIcon />} href={pythonSignUpLink} target="_blank" sx={btnStyle} > 
+                              <Button variant="outline" startIcon={<PersonAddIcon />} href={python["Link"]} target="_blank" sx={btnStyle} > 
                                  Sign Up
                               </Button>
 
@@ -168,8 +185,8 @@ export default function Sessions() {
                                  When:
                               </Typography>
                               <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
-                                 Every Sunday from 9/24 - 11/19
-                                 <br/>10:00 am - 12:00 pm
+                                 {arduinoInfo["Date"]}
+                                 <br/>{arduinoInfo["Time"]}
                               </Typography>
 
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
@@ -179,7 +196,7 @@ export default function Sessions() {
                                  Case Western Reserve University
                               </Typography>
 
-                              <Button variant="outline" startIcon={<PersonAddIcon />} href={arduinoSignUpLink} target="_blank" sx={btnStyle} > 
+                              <Button variant="outline" startIcon={<PersonAddIcon />} href={arduinoInfo["Link"]} target="_blank" sx={btnStyle} > 
                                  Sign Up
                               </Button>
 
