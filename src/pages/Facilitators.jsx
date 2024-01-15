@@ -43,6 +43,7 @@ export default function Facilitators() {
          setInfo(data[0].data)
          setFilteredInfo(data[0].data)
       }
+      console.log(data[0])
       
       setActiveChips({
          'all': 'filled', 
@@ -186,7 +187,7 @@ export default function Facilitators() {
                         >
                         <Card sx={{ minWidth: 'auto' }}>
                            <CardMedia component='img' 
-                           image={`https://drive.google.com/uc?export=view&id=${obj["Image ID"]}`} 
+                           image={`https://drive.google.com/thumbnail?id=${obj["Image ID"]}&sz=w1000`} 
                            height='330vh' width='auto' sx={{display: 'block', mx: 'auto',}} />
 
                            <CardContent sx={{pt: '5%'}} >
