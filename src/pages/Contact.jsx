@@ -94,7 +94,10 @@ export default function Contact() {
    }
 
    const onSubmit = (e) => {
-      const canSubmit = validateForm(); 
+      const canSubmit = validateForm();
+      const serviceID = import.meta.env.VITE_SERVICE_ID
+      const templateID = import.meta.env.VITE_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_PUBLIC_KEY
 
       if(canSubmit) {
          const templateParams = {
@@ -107,7 +110,7 @@ export default function Contact() {
 
          e.preventDefault();
 
-         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY).then((result) => {
+         emailjs.send(serviceID, templateID, templateParams, publicKey).then((result) => {
             console.log(result)
             setForm({
                name: '', 

@@ -59,8 +59,8 @@ export default function CustomizedAccordions(tab) {
   const [sheet, setSheet] = useState([]);
 
   const { data, loading, error } = useGoogleSheets({
-    apiKey: GOOGLE_API_KEY,
-    sheetId: SPREADSHEET_ID,
+    apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
+    sheetId: import.meta.env.VITE_SPREADSHEET_ID,
   });
 
   useEffect(() => {
