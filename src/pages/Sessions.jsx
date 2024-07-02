@@ -8,13 +8,11 @@ import './page.css';
 import pythonCode from '../pictures/python-code.jpg';
 import arduino from '../pictures/arduino.jpg';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { pythonSignUpLink, arduinoSignUpLink } from '../Links.jsx';
 import { Button, Container, AppBar, Box, Toolbar, Typography, Paper, Grid, Card, Divider, Stack, CardContent } from "@mui/material"; 
 import PageTitle from "../components/PageTitle.jsx";
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
-import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
-import useGoogleSheets from 'use-google-sheets';
+import { getSheet } from '../api.jsx';
 
 export default function Sessions() {
    const [python, setPython] = useState({});
@@ -62,19 +60,23 @@ export default function Sessions() {
       fontWeight: 700
    }
 
-   const { data, loading, error } = useGoogleSheets({
-      apiKey: GOOGLE_API_KEY,
-      sheetId: SPREADSHEET_ID,
-      sheetsOptions: [{ id: 'Semester Info' }],
-    });
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const incomingData = await getSheet('Semester Info');
 
-    useEffect(() => {
-      if(data[0]) {
-         //python in first row of table and arduino in second row
-         setPython(data[0].data[0])
-         setArduinoInfo(data[0].data[1])
+            let tempData = incomingData[0].data;
+            console.log('TEMP DATA', tempData);
+
+            setPython(tempData[0]);
+            setArduinoInfo(tempData[1]);
+         } catch (error) {
+            console.error(error);
+         }
       }
-   }, [data]);
+
+      fetchData();
+   }, []);
 
    return (
       <ThemeProvider theme={theme}>

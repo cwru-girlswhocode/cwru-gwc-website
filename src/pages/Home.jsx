@@ -11,7 +11,6 @@ import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
 import { motion } from "framer-motion";
 import arduinoPic from '../pictures/group-arduino.jpg';
 import pythonPic from '../pictures/what-we-do.jpeg';
-import { pythonSignUpLink, arduinoSignUpLink } from '../Links.jsx';
 import ImageSlider from "../components/ImageSlider.jsx";
 import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
 import useGoogleSheets from 'use-google-sheets';

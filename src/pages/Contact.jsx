@@ -2,7 +2,7 @@ import {ThemeProvider} from '@mui/material/styles';
 import {useState, useEffect} from "react";
 import theme from '../styles/Styles.jsx'; 
 import { Link } from "react-router-dom";
-import { facilitatorForm, pythonSignUpLink, arduinoSignUpLink, instagramLink, emailLabel, emailLink } from '../Links.jsx';
+import { instagramLink, emailLink, emailLabel } from '../Links.jsx'
 import { motion } from "framer-motion";
 import './page.css';
 import emailjs from '@emailjs/browser';
