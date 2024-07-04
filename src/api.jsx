@@ -24,8 +24,18 @@ export const getLink = async ( linkName ) => {
          sheetsOptions: [{ id: 'Links' }],
       });
 
-      let tempData = incomingData[0].data;
+      let tempData = incomingData[0].data[0];
+
       return tempData[linkName];
+      // const links = {};
+
+      // linkNames.forEach(name => {
+      //    links[name] = tempData[name];
+      // });
+
+      // console.log("Requested links: ", links);
+
+      // return links;
    } catch (error) {
       console.error(error);
    }
