@@ -3,7 +3,6 @@ import {ThemeProvider} from '@mui/material/styles';
 import theme from '../styles/Styles.jsx'; 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
 import './page.css';
 import pythonCode from '../pictures/python-code.jpg';
 import arduino from '../pictures/arduino.jpg';

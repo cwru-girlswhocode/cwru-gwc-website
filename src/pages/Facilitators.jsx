@@ -13,10 +13,10 @@ import PageTitle from "../components/PageTitle.jsx";
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
 import { SignalWifiStatusbarConnectedNoInternet4TwoTone } from "@mui/icons-material";
-import { getSheet, getLink } from '../api.jsx';
+import { getSheet, getLinks } from '../api.jsx';
 
 export default function Facilitators() {
-   const [facilitatorForm, setFacilitatorForm] = useState();
+   const [links, setLinks] = useState([]);
    const [filteredInfo, setFilteredInfo] = useState([]);
    const [info, setInfo] = useState([]);
    const [activeChips, setActiveChips] = useState({
@@ -34,16 +34,6 @@ export default function Facilitators() {
    }
 
    useEffect(() => {
-      const fetchLink = async () => {
-         try {
-            const incomingLink = await getLink('Facilitator');
-            console.log(incomingLink);
-            setFacilitatorForm(incomingLink);
-         } catch (error) {
-            console.error(error);
-         }
-      }
-
       const fetchData = async () => {
          try {
             const incomingData = await getSheet('Facilitator Pics');
@@ -52,21 +42,15 @@ export default function Facilitators() {
             setInfo(tempData);
             setFilteredInfo(tempData);
 
-            // const incomingLinkData = await getLinks(['Facilitator']);
-
-            // setLinks(incomingLinkData);
-
-            // console.log('incoming link data', incomingLinkData);
+            const incomingLinkData = await getLinks(['Facilitator']);
+            setLinks(incomingLinkData);
          } catch (error) {
             console.error(error);
          }
       }
 
-      fetchLink();
       fetchData();
 
-    
-      
       setActiveChips({
          'all': 'filled', 
          'arduino': 'outlined', 
@@ -172,7 +156,7 @@ export default function Facilitators() {
                <Reveal index={1.3}>
                   <Paper elevation={2} sx={{backgroundColor: '#F4F4F4', my: '25px', borderLeft: 'solid 8px', borderColor: '#009ECF', mb: '4vh'}}>
                      <Typography sx={{fontSize: {xs: '16px', md: '22px', xl: '38px'}, p: '3vh'}}>
-                        Interested in becoming a facilitator? <a style={linkStyle} target='_blank' rel="noreferrer" href={facilitatorForm}>Apply for next semester!</a> <em>(CWRU students only)</em>
+                        Interested in becoming a facilitator? <a style={linkStyle} target='_blank' rel="noreferrer" href={links['Facilitator']}>Apply for next semester!</a> <em>(CWRU students only)</em>
                      </Typography>
                   </Paper>
                </Reveal>

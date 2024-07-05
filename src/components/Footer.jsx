@@ -1,30 +1,43 @@
+import React, {useState, useEffect} from "react";
 import {AppBar, Box, Toolbar, Typography, Stack, IconButton, Divider } from "@mui/material"; 
-import { linkTree, instagramLink, emailLabel, emailLink } from '../Links.jsx';
 import { Link } from "react-router-dom";
 import "../App.css";
-// import {ThemeProvider} from '@mui/material/styles'; 
-// import theme from './styles/Styles';
-
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import { getLinks } from '../api.jsx'
 
 export default function Footer() {
+   const [links, setLinks] = useState({});
+
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const incomingLinkData = await getLinks(['LinkTree', 'Instagram', 'Email']);
+            setLinks(incomingLinkData);
+
+         } catch (error) {
+            console.error(error);
+         }
+      }
+
+      fetchData();
+   }, [])
 
    const iconLinks = [
       {
          label: '@cwrugirlswhocode', 
-         link: instagramLink, 
+         link: links['Instagram'], 
          icon: <InstagramIcon sx={{color: "#ffffff"}} />
       }, 
       {
-         label: emailLabel, 
-         link: emailLink, 
+         label: 'girlswhocode@case.edu', 
+         link: links['Email'], 
          icon: <MailOutlineIcon sx={{color: "#ffffff"}} />
       },
       {
          label: 'Sign Up!', 
-         link: linkTree, 
+         link: links['LinkTree'], 
          icon: <GroupAddIcon sx={{color: "#ffffff"}} />
       } 
    ]
@@ -36,6 +49,7 @@ export default function Footer() {
          backgroundColor: '#009ECE',
       },
    }
+
 
    return (
       // <ThemeProvider theme={theme}>

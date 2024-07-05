@@ -16,7 +16,7 @@ export const getSheet = async ( sheetName ) => {
    }
 }
 
-export const getLink = async ( linkName ) => {
+export const getLinks = async ( linkNames ) => {
    try {
       const incomingData = await fetchGoogleSheetsData({
          apiKey: import.meta.env.VITE_GOOGLE_API_KEY,
@@ -25,17 +25,16 @@ export const getLink = async ( linkName ) => {
       });
 
       let tempData = incomingData[0].data[0];
+      const links = {};
 
-      return tempData[linkName];
-      // const links = {};
+      linkNames.forEach(name => {
+         links[name] = tempData[name];
+         console.log(name);
+      });
 
-      // linkNames.forEach(name => {
-      //    links[name] = tempData[name];
-      // });
+      console.log("Requested links: ", links);
 
-      // console.log("Requested links: ", links);
-
-      // return links;
+      return links;
    } catch (error) {
       console.error(error);
    }
