@@ -5,6 +5,7 @@ import "../App.css";
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import { getLinks } from '../api.jsx'
 
 export default function Footer() {
@@ -13,7 +14,7 @@ export default function Footer() {
    useEffect(() => {
       const fetchData = async () => {
          try {
-            const incomingLinkData = await getLinks(['LinkTree', 'Instagram', 'Email']);
+            const incomingLinkData = await getLinks(['LinkTree', 'Instagram', 'Email', 'Facebook']);
             setLinks(incomingLinkData);
 
          } catch (error) {
@@ -31,6 +32,12 @@ export default function Footer() {
          icon: <InstagramIcon sx={{color: "#ffffff"}} />
       }, 
       {
+         label: 'CWRU GWC Facebook',
+         link: links['Facebook'],
+         icon: <FacebookIcon sx={{color: "#ffffff"}} />
+
+      },
+      {
          label: 'girlswhocode@case.edu', 
          link: links['Email'], 
          icon: <MailOutlineIcon sx={{color: "#ffffff"}} />
@@ -39,7 +46,7 @@ export default function Footer() {
          label: 'Sign Up!', 
          link: links['LinkTree'], 
          icon: <GroupAddIcon sx={{color: "#ffffff"}} />
-      } 
+      }
    ]
 
    const iconBtnStyle = {

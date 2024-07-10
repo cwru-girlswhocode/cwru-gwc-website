@@ -10,6 +10,7 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import GroupsIcon from '@mui/icons-material/Groups';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import {  Typography, Divider, Box, Grid, Stack , TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Paper, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Snackbar, Alert} from "@mui/material";
 import PageTitle from '../components/PageTitle.jsx'; 
 import StaggerItem from '../styles/StaggerItems.jsx';
@@ -31,7 +32,7 @@ export default function Contact() {
    useEffect(() => {
       try {
          const fetchData = async () => {
-            const incomingLinkData = await getLinks(['Python', 'Arduino', 'Facilitator', 'Instagram', 'Email']);
+            const incomingLinkData = await getLinks(['Python', 'Arduino', 'Facilitator', 'Instagram', 'Email', 'Facebook']);
             setLinks(incomingLinkData);
          }
 
@@ -158,6 +159,21 @@ export default function Contact() {
                                        <InstagramIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>
                                     <ListItemText primary="@cwrugirlswhocode" primaryTypographyProps={{
+                                       fontSize: 16,
+                                       fontWeight: 'medium',
+                                       lineHeight: '20px',
+                                       color: '#ffffff',
+                                       ml: -2, 
+                                       // mb: '2px',
+                                       }}/>
+                                 </ListItemButton>
+                              </ListItem>
+                              <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
+                                 <ListItemButton href={links['Facebook']} target='_blank'>
+                                    <ListItemIcon>
+                                       <FacebookIcon size='medium' sx={{color: '#B2E5F7'}}/>
+                                    </ListItemIcon>
+                                    <ListItemText primary="CWRU GWC Facebook" primaryTypographyProps={{
                                        fontSize: 16,
                                        fontWeight: 'medium',
                                        lineHeight: '20px',
