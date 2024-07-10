@@ -32,7 +32,7 @@ export const getLinks = async ( linkNames ) => {
          console.log(name);
       });
 
-      console.log("Requested links: ", links);
+      console.log("api.jsx#getLinks: requested links: ", links);
 
       return links;
    } catch (error) {

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import './page.css';
 import pythonCode from '../pictures/python-code.jpg';
-import arduino from '../pictures/arduino.jpg';
+import arduinoCode from '../pictures/arduino-code.jpg';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Button, Container, AppBar, Box, Toolbar, Typography, Paper, Grid, Card, Divider, Stack, CardContent } from "@mui/material"; 
 import PageTitle from "../components/PageTitle.jsx";
@@ -15,7 +15,7 @@ import { getSheet } from '../api.jsx';
 
 export default function Sessions() {
    const [python, setPython] = useState({});
-   const [arduinoInfo, setArduinoInfo] = useState({}); 
+   const [arduino, setArduino] = useState({}); 
 
    const btnStyle = {
       textTransform: 'unset !important', 
@@ -65,10 +65,9 @@ export default function Sessions() {
             const incomingData = await getSheet('Semester Info');
 
             let tempData = incomingData[0].data;
-            console.log('TEMP DATA', tempData);
 
             setPython(tempData[0]);
-            setArduinoInfo(tempData[1]);
+            setArduino(tempData[1]);
          } catch (error) {
             console.error(error);
          }
@@ -169,7 +168,7 @@ export default function Sessions() {
                               </Typography>
 
                               <img 
-                                 src={arduino} 
+                                 src={arduinoCode} 
                                  style={{width: '100%', align: 'left', padding: "4% 0"}}
                               />
 
@@ -186,8 +185,8 @@ export default function Sessions() {
                                  When:
                               </Typography>
                               <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
-                                 {arduinoInfo["Date"]}
-                                 <br/>{arduinoInfo["Time"]}
+                                 {arduino["Date"]}
+                                 <br/>{arduino["Time"]}
                               </Typography>
 
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
@@ -197,7 +196,7 @@ export default function Sessions() {
                                  Case Western Reserve University
                               </Typography>
 
-                              <Button variant="outline" startIcon={<PersonAddIcon />} href={arduinoInfo["Link"]} target="_blank" sx={btnStyle} > 
+                              <Button variant="outline" startIcon={<PersonAddIcon />} href={arduino["Link"]} target="_blank" sx={btnStyle} > 
                                  Sign Up
                               </Button>
 

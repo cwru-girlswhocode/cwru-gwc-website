@@ -12,8 +12,7 @@ import { motion } from "framer-motion";
 import arduinoPic from '../pictures/group-arduino.jpg';
 import pythonPic from '../pictures/what-we-do.jpeg';
 import ImageSlider from "../components/ImageSlider.jsx";
-import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
-import useGoogleSheets from 'use-google-sheets';
+import { getSheet } from "../api.jsx";
 
 import image0 from '../pictures/group-photo.jpeg';
 import image1 from "../pictures/groupPic3.jpeg";
@@ -44,17 +43,10 @@ export default function Home() {
    const handleButtonClick = () => {
       if(isBouncing) {
          setIsBouncing(false);
-         // console.log("button clicked")
       }
 
       scrollDown(); 
     };
-
-    const { data, loading, error } = useGoogleSheets({
-      apiKey: GOOGLE_API_KEY,
-      sheetId: SPREADSHEET_ID,
-      sheetsOptions: [{ id: 'Semester Info' }],
-    });
 
     const btnStyle = {
       textTransform: 'unset !important', 
@@ -104,12 +96,21 @@ export default function Home() {
    ]
 
    useEffect(() => {
-      if(data[0]) {
-         //python in first row of table and arduino in second row
-         setPython(data[0].data[0])
-         setArduino(data[0].data[1])
+      const fetchData = async () => {
+         try {
+            const incomingData = await getSheet('Semester Info');
+
+            let tempData = incomingData[0].data;
+
+            setPython(tempData[0]);
+            setArduino(tempData[1]);
+         } catch (error) {
+            console.error(error);
+         }
       }
-   }, [data]);
+
+      fetchData();
+   }, []);
 
    return (
       <ThemeProvider theme={theme}>
