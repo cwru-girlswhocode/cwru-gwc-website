@@ -146,7 +146,7 @@ export default function About() {
                                     Over 5 Areas of Study
                                  </Typography>
                                  <Typography variant='body1' sx={{fontSize: {xs: '16px', md: '20px', xl: '28px'}}}>
-                                    including computer/data science, systems biology, biomedical engineering, psychology and more!
+                                    including computer/data science, systems biology, biomedical engineering, psychology, and more!
                                  </Typography>
                               </Stack>
                               
