@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from 'axios'; 
 import {ThemeProvider} from '@mui/material/styles'; 
-import theme from '../styles/Styles.jsx'; 
-// import { Link } from "react-router-dom";
+import theme from '../styles/Styles.jsx';
 import { motion } from "framer-motion";
 import './page.css';
 import {  Typography, Divider, Tab, Box} from "@mui/material"; 

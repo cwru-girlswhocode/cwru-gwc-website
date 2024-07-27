@@ -3,22 +3,19 @@ import {ThemeProvider} from '@mui/material/styles';
 import theme from '../styles/Styles.jsx'; 
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-
 import './page.css';
 import pythonCode from '../pictures/python-code.jpg';
-import arduino from '../pictures/arduino.jpg';
+import arduinoCode from '../pictures/arduino-code.jpg';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import { pythonSignUpLink, arduinoSignUpLink } from '../Links.jsx';
 import { Button, Container, AppBar, Box, Toolbar, Typography, Paper, Grid, Card, Divider, Stack, CardContent } from "@mui/material"; 
 import PageTitle from "../components/PageTitle.jsx";
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
-import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
-import useGoogleSheets from 'use-google-sheets';
+import { getSheet } from '../api.jsx';
 
 export default function Sessions() {
    const [python, setPython] = useState({});
-   const [arduinoInfo, setArduinoInfo] = useState({}); 
+   const [arduino, setArduino] = useState({}); 
 
    const btnStyle = {
       textTransform: 'unset !important', 
@@ -62,19 +59,22 @@ export default function Sessions() {
       fontWeight: 700
    }
 
-   const { data, loading, error } = useGoogleSheets({
-      apiKey: GOOGLE_API_KEY,
-      sheetId: SPREADSHEET_ID,
-      sheetsOptions: [{ id: 'Semester Info' }],
-    });
+   useEffect(() => {
+      const fetchData = async () => {
+         try {
+            const incomingData = await getSheet('Semester Info');
 
-    useEffect(() => {
-      if(data[0]) {
-         //python in first row of table and arduino in second row
-         setPython(data[0].data[0])
-         setArduinoInfo(data[0].data[1])
+            let tempData = incomingData[0].data;
+
+            setPython(tempData[0]);
+            setArduino(tempData[1]);
+         } catch (error) {
+            console.error(error);
+         }
       }
-   }, [data]);
+
+      fetchData();
+   }, []);
 
    return (
       <ThemeProvider theme={theme}>
@@ -168,7 +168,7 @@ export default function Sessions() {
                               </Typography>
 
                               <img 
-                                 src={arduino} 
+                                 src={arduinoCode} 
                                  style={{width: '100%', align: 'left', padding: "4% 0"}}
                               />
 
@@ -185,8 +185,8 @@ export default function Sessions() {
                                  When:
                               </Typography>
                               <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
-                                 {arduinoInfo["Date"]}
-                                 <br/>{arduinoInfo["Time"]}
+                                 {arduino["Date"]}
+                                 <br/>{arduino["Time"]}
                               </Typography>
 
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
@@ -196,7 +196,7 @@ export default function Sessions() {
                                  Case Western Reserve University
                               </Typography>
 
-                              <Button variant="outline" startIcon={<PersonAddIcon />} href={arduinoInfo["Link"]} target="_blank" sx={btnStyle} > 
+                              <Button variant="outline" startIcon={<PersonAddIcon />} href={arduino["Link"]} target="_blank" sx={btnStyle} > 
                                  Sign Up
                               </Button>
 

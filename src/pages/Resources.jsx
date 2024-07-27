@@ -10,7 +10,6 @@ import FadeIn from "../styles/FadeIn";
 
 import gwcLogo from '../pictures/GWC_SEO_Logo.png'
 import PageTitle from '../components/PageTitle.jsx';
-// import gwcCodeAtHome from '..pictures/'
 
 export default function Resources() {
 

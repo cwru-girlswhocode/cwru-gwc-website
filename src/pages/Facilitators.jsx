@@ -5,17 +5,16 @@ import { motion } from "framer-motion";
 import './page.css';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { facilitatorForm } from '../Links.jsx';
 import {  Typography, Divider, Paper, Stack, Grid, IconButton, Chip, Card, CardMedia, CardContent, CardActions} from "@mui/material"; 
 import CheckIcon from '@mui/icons-material/Check';
-import useGoogleSheets from 'use-google-sheets';
 import PageTitle from "../components/PageTitle.jsx";
 import Reveal from "../styles/Reveal.jsx";
 import StaggerItem from "../styles/StaggerItems.jsx";
 import { SignalWifiStatusbarConnectedNoInternet4TwoTone } from "@mui/icons-material";
-import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
+import { getSheet, getLinks } from '../api.jsx';
 
 export default function Facilitators() {
+   const [links, setLinks] = useState([]);
    const [filteredInfo, setFilteredInfo] = useState([]);
    const [info, setInfo] = useState([]);
    const [activeChips, setActiveChips] = useState({
@@ -32,19 +31,24 @@ export default function Facilitators() {
       'exec': 'outlined'
    }
 
-   const { data, loading, error } = useGoogleSheets({
-      apiKey: GOOGLE_API_KEY,
-      sheetId: SPREADSHEET_ID,
-      sheetsOptions: [{ id: 'Facilitator Pics' }],
-    });
-
    useEffect(() => {
-      if(data[0]) {
-         setInfo(data[0].data)
-         setFilteredInfo(data[0].data)
+      const fetchData = async () => {
+         try {
+            const incomingData = await getSheet('Facilitator Pics');
+            let tempData = incomingData[0].data;
+
+            setInfo(tempData);
+            setFilteredInfo(tempData);
+
+            const incomingLinkData = await getLinks(['Facilitator']);
+            setLinks(incomingLinkData);
+         } catch (error) {
+            console.error(error);
+         }
       }
-      console.log(data[0])
-      
+
+      fetchData();
+
       setActiveChips({
          'all': 'filled', 
          'arduino': 'outlined', 
@@ -52,7 +56,7 @@ export default function Facilitators() {
          'exec': 'outlined'
       })
 
-   }, [data])
+   }, [])
 
    const handleFilterClick = (e) => {
       console.log(e)
@@ -70,7 +74,7 @@ export default function Facilitators() {
                'all': 'filled'
             }
       }
-      //if clicked chip that is currently selected, go back to 'all'
+      // if clicked chip that is currently selected, go back to 'all'
       else if(activeChips[chipName] === 'filled') {
          newObj = {
             ...resetAllChips, 
@@ -150,7 +154,7 @@ export default function Facilitators() {
                <Reveal index={1.3}>
                   <Paper elevation={2} sx={{backgroundColor: '#F4F4F4', my: '25px', borderLeft: 'solid 8px', borderColor: '#009ECF', mb: '4vh'}}>
                      <Typography sx={{fontSize: {xs: '16px', md: '22px', xl: '38px'}, p: '3vh'}}>
-                        Interested in becoming a facilitator? <a style={linkStyle} target='_blank' rel="noreferrer" href={facilitatorForm} >Apply for next semester!</a> <em>(CWRU students only)</em>
+                        Interested in becoming a facilitator? <a style={linkStyle} target='_blank' rel="noreferrer" href={links['Facilitator']}>Apply for next semester!</a> <em>(CWRU students only)</em>
                      </Typography>
                   </Paper>
                </Reveal>
@@ -185,12 +189,12 @@ export default function Facilitators() {
                         // index={index > 3 ? index%4 + 1 : 1.5*index}
                            index={1.6}
                         >
-                        <Card sx={{ minWidth: 'auto' }}>
+                        <Card sx={{ minWidth: 'auto', height: '554px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                            <CardMedia component='img' 
                            image={`https://drive.google.com/thumbnail?id=${obj["Image ID"]}&sz=w1000`} 
-                           height='330vh' width='auto' sx={{display: 'block', mx: 'auto',}} />
+                           height='330vh' />
 
-                           <CardContent sx={{pt: '5%'}} >
+                           <CardContent sx={{pt: '5%', flexGrow: 1}} >
                               <Typography variant='h5' sx={{fontWeight: 600, fontSize:'1.5em', textAlign: 'center', pb: '2%'}}>
                                  {obj["Name"]}
                               </Typography>

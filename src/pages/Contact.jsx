@@ -2,7 +2,6 @@ import {ThemeProvider} from '@mui/material/styles';
 import {useState, useEffect} from "react";
 import theme from '../styles/Styles.jsx'; 
 import { Link } from "react-router-dom";
-import { facilitatorForm, pythonSignUpLink, arduinoSignUpLink, instagramLink, emailLabel, emailLink } from '../Links.jsx';
 import { motion } from "framer-motion";
 import './page.css';
 import emailjs from '@emailjs/browser';
@@ -11,11 +10,11 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import GroupsIcon from '@mui/icons-material/Groups';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import {  Typography, Divider, Box, Grid, Stack , TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button, Paper, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Snackbar, Alert} from "@mui/material";
 import PageTitle from '../components/PageTitle.jsx'; 
 import StaggerItem from '../styles/StaggerItems.jsx';
-import useGoogleSheets from 'use-google-sheets';
-import { SERVICE_ID, TEMPLATE_ID, PUBLIC_KEY, GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
+import { getLinks } from "../api.jsx";
 
 export default function Contact() {
    const linkStyle = {
@@ -29,17 +28,19 @@ export default function Contact() {
    }
 
    const [links, setLinks] = useState([]); 
-   const { data, loading, error } = useGoogleSheets({
-      apiKey: GOOGLE_API_KEY,
-      sheetId: SPREADSHEET_ID,
-      sheetsOptions: [{ id: 'Links' }],
-    });
 
    useEffect(() => {
-      if(data[0]) {
-         setLinks(data[0].data[0])
+      try {
+         const fetchData = async () => {
+            const incomingLinkData = await getLinks(['Python', 'Arduino', 'Facilitator', 'Instagram', 'Email', 'Facebook']);
+            setLinks(incomingLinkData);
+         }
+
+         fetchData();
+      } catch (error) {
+         console.error(error);
       }
-   }, [data])
+   }, [])
 
    const [form, setForm] = useState({
       name: '', 
@@ -94,7 +95,10 @@ export default function Contact() {
    }
 
    const onSubmit = (e) => {
-      const canSubmit = validateForm(); 
+      const canSubmit = validateForm();
+      const serviceID = import.meta.env.VITE_SERVICE_ID
+      const templateID = import.meta.env.VITE_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_PUBLIC_KEY
 
       if(canSubmit) {
          const templateParams = {
@@ -107,7 +111,7 @@ export default function Contact() {
 
          e.preventDefault();
 
-         emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY).then((result) => {
+         emailjs.send(serviceID, templateID, templateParams, publicKey).then((result) => {
             console.log(result)
             setForm({
                name: '', 
@@ -150,7 +154,7 @@ export default function Contact() {
                            </Typography>
                            <List>
                               <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
-                                 <ListItemButton href={instagramLink} target='_blank'>
+                                 <ListItemButton href={links['Instagram']} target='_blank'>
                                     <ListItemIcon>
                                        <InstagramIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>
@@ -165,11 +169,26 @@ export default function Contact() {
                                  </ListItemButton>
                               </ListItem>
                               <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
-                                 <ListItemButton href={emailLink} target='_blank'>
+                                 <ListItemButton href={links['Facebook']} target='_blank'>
+                                    <ListItemIcon>
+                                       <FacebookIcon size='medium' sx={{color: '#B2E5F7'}}/>
+                                    </ListItemIcon>
+                                    <ListItemText primary="CWRU GWC Facebook" primaryTypographyProps={{
+                                       fontSize: 16,
+                                       fontWeight: 'medium',
+                                       lineHeight: '20px',
+                                       color: '#ffffff',
+                                       ml: -2, 
+                                       // mb: '2px',
+                                       }}/>
+                                 </ListItemButton>
+                              </ListItem>
+                              <ListItem disablePadding sx={{ width: '90%', '&:hover': {backgroundColor: '#41454B'}}}>
+                                 <ListItemButton href={links['Email']} target='_blank'>
                                     <ListItemIcon>
                                        <MailOutlineIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>
-                                    <ListItemText primary={emailLabel} primaryTypographyProps={{
+                                    <ListItemText primary="girlswhocode@case.edu" primaryTypographyProps={{
                                        fontSize: 16,
                                        fontWeight: 'medium',
                                        lineHeight: '20px',
@@ -222,7 +241,7 @@ export default function Contact() {
                                     <ListItemIcon>
                                        <GroupsIcon size='medium' sx={{color: '#B2E5F7'}}/>
                                     </ListItemIcon>
-                                    <ListItemText primary="Be a Facilitator" primaryTypographyProps={{
+                                    <ListItemText primary="Be a Facilitator (CWRU Students Only)" primaryTypographyProps={{
                                        fontSize: 16,
                                        fontWeight: 'medium',
                                        lineHeight: '20px',

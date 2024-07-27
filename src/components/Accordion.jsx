@@ -7,9 +7,8 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import {ThemeProvider} from '@mui/material/styles'; 
-import theme from '../styles/Styles.jsx'; 
-import useGoogleSheets from 'use-google-sheets';
-import { GOOGLE_API_KEY, SPREADSHEET_ID } from '../constants';
+import theme from '../styles/Styles.jsx';
+import { getSheet } from "../api.jsx";
 
 const Accordion = styled((props) => (
   <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -58,18 +57,24 @@ export default function CustomizedAccordions(tab) {
   const [expanded, setExpanded] = useState('panel1');
   const [sheet, setSheet] = useState([]);
 
-  const { data, loading, error } = useGoogleSheets({
-    apiKey: GOOGLE_API_KEY,
-    sheetId: SPREADSHEET_ID,
-  });
-
   useEffect(() => {
-    if(data[1] && tab.tab === 1) {
-      setSheet(data[1].data)
-    } else if(data[2] && tab.tab === 2) {
-      setSheet(data[2].data)
+    try {
+      const fetchData = async () => {
+        const incomingStudentData = await getSheet('Student Questions');
+        const incomingParentData = await getSheet('Parent Questions');
+
+        if (tab.tab === 1 && incomingStudentData) {
+          setSheet(incomingStudentData[0].data);
+        } else if (tab.tab === 2 && incomingParentData) {
+          setSheet(incomingParentData[0].data);
+        }
+      }
+
+      fetchData();
+    } catch (error) {
+      console.error(error);
     }
-  }, [data, tab.tab])
+  }, [tab.tab])
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
