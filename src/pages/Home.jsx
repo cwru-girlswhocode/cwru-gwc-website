@@ -142,7 +142,7 @@ export default function Home() {
                   Case Western Reserve University
                </Typography>
                <Typography variant="h5" sx={{px: '5px', my: 'max(28px, 6vh)', width: {xs: '80%', md: '65%'}, fontSize: {xs: '17px', md: '26px', xl: '40px'} }}>
-                  Motivated to close the gender gap within the field of computer science by encouraging high school students to enter the field of tech.
+                  Motivated to close the gender gap within the field of computer science by encouraging middle school and high school students to enter the field of tech.
                </Typography>
                
                <motion.div 
@@ -218,7 +218,7 @@ export default function Home() {
                   <Divider variant="fullWidth" sx={{width: '55%', my: '4vh', borderBottomWidth: 3, backgroundColor: "#22252A",}}/>
 
                   <Typography variant="body1" sx={{fontSize: {xs: '16px', md: '23px', xl: '36px'},}}>
-                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> to introduce middle school and high school girls to basic programming and problem-solving skills. We are seeking students in the Cleveland area for our programs this spring. We currently offer Intro to Programming with Python for middle school students and Intro to Arduino for high school students.
+                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> that introduce middle school and high school girls to basic programming and problem-solving skills. We are seeking students in the Cleveland area for our programs this spring. We currently offer Intro to Programming with Python for middle school students and Intro to Arduino for high school students.
 
                   </Typography>
                   

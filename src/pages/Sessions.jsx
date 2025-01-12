@@ -120,10 +120,12 @@ export default function Sessions() {
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
                                  What You Will Learn:
                               </Typography>
-                              <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
+                              <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}>
                                  In this course, CWRU GWC will cover the fundamentals of programming in Python. Python is a programming language that is extremely versatile and can be used in many different fields like software engineering, data science, and artificial intelligence.
                                  <br/><br/>
                                  Some previous student projects include coding Connect 4, Battleship, sudoku, and more!
+                                 <br/><br/>
+                                 This session is intended for middle school students.
                               </Typography>
 
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
@@ -177,8 +179,10 @@ export default function Sessions() {
                               </Typography>
                               <Typography variant='body2' sx={{fontSize: '18px', pb: '4%'}}> 
                                  In this course, CWRU GWC will be teaching the fundamentals of circuitry and programming using Arduinos. Arduinos are a small electronic computer that can store code and execute tasks with components such as LEDs, servo motors and LED matrices.
-                                 <br /><br/>
+                                 <br/><br/>
                                  Some previous student projects include a traffic light simulator, LED matrix flappy bird, and more!
+                                 <br/><br/>
+                                 This session is intended for high school students.
                               </Typography>
 
                               <Typography variant='body1' sx={{fontWeight: '600', fontSize: '22px'}}> 
