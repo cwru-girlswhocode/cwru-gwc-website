@@ -60,11 +60,13 @@ export default function CustomizedAccordions(tab) {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        const incomingStudentData = await getSheet('Student Questions');
-        const incomingParentData = await getSheet('Parent Questions');
+        const incomingStudentData = await getSheet('Parent Questions');
+        const incomingParentData = await getSheet('Student Questions');
 
         if (tab.tab === 1 && incomingStudentData) {
           setSheet(incomingStudentData[0].data);
+          console.log('here');
+          console.log(sheet);
         } else if (tab.tab === 2 && incomingParentData) {
           setSheet(incomingParentData[0].data);
         }
