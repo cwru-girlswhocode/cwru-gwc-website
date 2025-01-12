@@ -90,7 +90,7 @@ export default function Sessions() {
               
               <Reveal index={1.5}>
                   <Typography variant="body1" sx={{mb: '6vh'}}>
-                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> to introduce high-school girls to basic programming and problem-solving skills. Currently, we are seeking students in the Cleveland area for our programs this fall. Our goal is to help close the gender gap in technology and computer science. We are excited to continue teaching our Intro to Python and Intro to Arduino sessions!
+                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> to introduce middle school and high school girls to basic programming and problem-solving skills. Currently, we are seeking students in the Cleveland area for our programs this spring. Our goal is to help close the gender gap in technology and computer science. We are excited to continue teaching our Intro to Python and Intro to Arduino sessions!
 
                      <br /> <br />
                      Both sessions will happen in-person on CWRU’s campus. <strong>No previous experience required!</strong>

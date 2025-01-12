@@ -218,7 +218,7 @@ export default function Home() {
                   <Divider variant="fullWidth" sx={{width: '55%', my: '4vh', borderBottomWidth: 3, backgroundColor: "#22252A",}}/>
 
                   <Typography variant="body1" sx={{fontSize: {xs: '16px', md: '23px', xl: '36px'},}}>
-                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> to introduce high-school girls to basic programming and problem-solving skills. Currently, we are seeking students in the Cleveland area for our programs this fall. We currently offer two weekly sessions for high school students: Intro to Programming with Python and Intro to Arduino.
+                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> to introduce middle school and high school girls to basic programming and problem-solving skills. We are seeking students in the Cleveland area for our programs this spring. We currently offer Intro to Programming with Python for middle school students and Intro to Arduino for high school students.
 
                   </Typography>
                   
