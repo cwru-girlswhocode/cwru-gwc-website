@@ -178,7 +178,7 @@ export default function Home() {
                   <Grid container spacing={3}>
                      <Grid item xs={12} md={6} justifyContent='space-evenly' sx={{alignItems: 'stretch', justifyContent: 'space-between'}}>
                         <Typography variant="body1" sx={{mb: '2vh', fontSize: {xs: '16px', md: '23px', xl: '36px'}, width: '97%' }}>
-                           Girls Who Code’s mission is to close the gender gap in technological fields. By focusing on students in the age group of 13-17 who identify as female and nonbinary, we hope to expose them to the opportunities that they could have in the tech industry and diversify the field, pushing for equity and inclusion.
+                           Girls Who Code’s mission is to close the gender gap in technological fields. By focusing on students in the age group of 13-17, we hope to expose them to the opportunities that they could have in the tech industry and diversify the field, pushing for equity and inclusion.
                         </Typography>
                         <br/>
                         <Button variant="outline" 
@@ -218,7 +218,7 @@ export default function Home() {
                   <Divider variant="fullWidth" sx={{width: '55%', my: '4vh', borderBottomWidth: 3, backgroundColor: "#22252A",}}/>
 
                   <Typography variant="body1" sx={{fontSize: {xs: '16px', md: '23px', xl: '36px'},}}>
-                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> that introduce middle school and high school girls to basic programming and problem-solving skills. We are seeking students in the Cleveland area for our programs this spring. We currently offer Intro to Programming with Python for middle school students and Intro to Arduino for high school students.
+                     CWRU Girls Who Code members are very excited to be providing <strong>free semester-long programs </strong> that introduce middle school and high school students to basic programming and problem-solving skills. We are seeking students in the Cleveland area for our programs this spring. We currently offer Intro to Programming with Python for middle school students and Intro to Arduino for high school students. All students are welcome to participate.
 
                   </Typography>
                   
