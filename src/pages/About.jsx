@@ -164,7 +164,7 @@ export default function About() {
                   <Stack direction='row' alignItems='center' spacing={2} sx={{pl: '13px'}}>
                      <Diversity2Icon sx={iconStyle} />
                      <Typography variant='h5' sx={descTextStyle}>
-                        Help close the gender gap in the technology field by exposing high school students to opportunities within the tech industry with free weekly sessions.
+                        Help close the gender gap in the technology field by exposing K-12 students to opportunities and skills within the tech industry with free weekly sessions.
                      </Typography>
                   </Stack>
                   
@@ -189,7 +189,7 @@ export default function About() {
                            <Stack direction='row' alignItems='center' spacing={2}>
                               <Diversity3Icon sx={iconStyle} />
                               <Typography variant='h5' sx={descTextStyle}>
-                                 Foster a supportive community for underrepresented genders pursuing the tech field
+                                 Foster a welcoming and inclusive community open to everyone who supports equality for all individuals pursuing careers in technology
                               </Typography>
                               
                            </Stack>
